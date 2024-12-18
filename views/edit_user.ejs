@@ -1,0 +1,32 @@
+<title>
+    <%= title %>
+</title>
+<%- include('layout/header.ejs') %>
+<div class="d-flex justify-content-center vh-100" style="margin-top: 7rem;">
+    <form action="/edit/<%= user._id %>" method="POST" enctype="multipart/form-data" class="bg-light p-4 rounded shadow" style="width: 40%; height: 50vh; display: flex; flex-direction: column; justify-content: space-between;">
+        <div>
+            <div class="mb-3">
+                <label for="name" class="form-label">Enter Name</label>
+                <input type="text" class="form-control" id="name" name="name" placeholder="Enter full name" required value="<%= user.name %>">
+            </div>
+            <div class="mb-3">
+                <label for="email" class="form-label">Enter Email</label>
+                <input type="email" class="form-control" id="email" name="email" placeholder="Enter email address" required value="<%= user.email %>">
+            </div>
+            <div class="mb-3">
+                <label for="phone" class="form-label">Enter Phone</label>
+                <input type="tel" class="form-control" id="phone" name="phone" placeholder="Enter phone number" required value="<%= user.phone %>">
+            </div>
+            <div class="mb-3">
+                <label for="image" class="form-label">Select Image</label>
+                <input type="file" class="form-control" id="image" name="image" accept="image/*">
+                <img src="/<%= user.image %>" width="100" class="mt-1 img-thumbnail">
+            </div>
+            <input type="hidden" name="old_image" value="<%= user.image %>">
+        </div>
+        <div class="d-grid">
+            <button type="submit" class="btn btn-success"><i class="fas fa-save"></i> Update User</button>
+        </div>
+    </form>
+</div>
+<%- include('layout/footer.ejs') %>
